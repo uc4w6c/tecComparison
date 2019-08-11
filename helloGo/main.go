@@ -1,7 +1,18 @@
 package main
 
-import "fmt"
+import (
+    "github.com/labstack/echo"
+    "./handler"
+)
 
 func main() {
-	fmt.Println("vim-go")
+    // Echoのインスタンス作る
+    e := echo.New()
+
+    // ルーティング
+    e.GET("/hello", handler.MainPage())
+    e.GET("/api/hello", handler.ApiHelloGet())
+
+    // サーバー起動
+    e.Start(":8080")
 }
