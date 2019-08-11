@@ -24,6 +24,7 @@ func GetLatest(c echo.Context) error {
 
     var posts []Post
     dbmap.Select(&posts, "SELECT name, body, created_at from posts WHERE id = ? LIMIT 10", id)
+    // TODO: 以下デッドロジックになっているから修正
     if err != nil {
         log.Fatal(err)
     }
