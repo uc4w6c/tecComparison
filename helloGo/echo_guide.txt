@@ -1,1 +1,8 @@
+echo公式ガイド
 https://echo.labstack.com/guide
+
+パッケージングの参考になるもの
+https://qiita.com/chan-p/items/8cfaaf31720d6f025f29
+
+gorp(ORM)公式
+https://github.com/go-gorp/gorp
