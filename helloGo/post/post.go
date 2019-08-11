@@ -1,12 +1,11 @@
 package post
 
 import (
-    "fmt"
     "log"
-    "time"
-    "database/sql"
     "net/http"
+    "database/sql"
     "github.com/labstack/echo"
+    "github.com/go-gorp/gorp"
     _ "github.com/go-sql-driver/mysql"
 )
 
@@ -15,26 +14,16 @@ func GetLatest() echo.HandlerFunc {
     if err != nil {
         log.Fatal(err)
     }
-    defer db.Close()
+    dbmap := &gorp.DbMap{Db: db, Dialect: gorp.MySQLDialect{}}
+    defer dbmap.Db.Close()
 
-    rows, err := db.Query(`SELECT name, body, created_at from posts LIMIT 10`)
+    var posts []Post
+    dbmap.Select(&posts, `SELECT name, body, created_at from posts LIMIT 10`)
     if err != nil {
         log.Fatal(err)
     }
-    log.Printf("DB SUCCESS")
 
-    for rows.Next() {
-        var name string
-        var body string
-        var created_at *time.Time
-        err = rows.Scan(&name, &body, &created_at)
-        if err != nil {
-          log.Fatal(err)
-        }
-        fmt.Println(name, body, created_at)
-        log.Printf(name, body, created_at)
-    }
     return func(c echo.Context) error {     
-        return c.String(http.StatusOK, "Hello DB")
+        return c.JSON(http.StatusOK, posts)
     }
 }
