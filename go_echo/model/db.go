@@ -2,6 +2,8 @@ package model
 
 import (
     "database/sql"
+    "os"
+    "log"
     "github.com/go-gorp/gorp"
     _ "github.com/go-sql-driver/mysql"
 )
@@ -15,4 +17,6 @@ func init() {
     }
 
     dbmap = &gorp.DbMap{Db: db, Dialect: gorp.MySQLDialect{}}
+    // SQLのログを常に取得する
+    dbmap.TraceOn("[gorp]",log.New(os.Stdout, "gorptest:", log.Lmicroseconds))
 }
