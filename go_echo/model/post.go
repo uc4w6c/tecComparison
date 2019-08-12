@@ -28,6 +28,8 @@ func GetLatestByTopicId(id int) []Post {
 
 func GetPostsByTopicId(id int, page int) []Post {
     var posts []Post
-    dbmap.SelectOne(&posts, "SELECT * from topics WHERE id = ? LIMIT ?, ?", id, (page - 1) * DISPLAYABLE_SIZE, DISPLAYABLE_SIZE)
+    // dbmap.SelectOne(&posts, "SELECT * from topics WHERE id = ? LIMIT ?, ?", id, (page - 1) * DISPLAYABLE_SIZE, DISPLAYABLE_SIZE)
+    replMap := map[string]interface{}{ "id": id, "offset": (page - 1) * DISPLAYABLE_SIZE, "rowCount": DISPLAYABLE_SIZE }
+    dbmap.Select(&posts, "SELECT * from posts WHERE topic_id = :id LIMIT :offset, :rowCount", replMap)
     return posts
 }
