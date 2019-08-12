@@ -7,6 +7,7 @@ import (
 
 type Post struct {
   Id            int64     `json:"id" db:"id,primarykey,autoincrement"`
+  TopicId       int64     `json:"topic_id" db:"topic_id,notnull"`
   Name          string    `json:"name" db:"name,notnull`
   Body          string    `json:"body" db:"body,notnull`
   DeletedReason string    `json:"deleted_reason"`
@@ -50,4 +51,13 @@ func DeletePost(id int, deleteReason string) int {
     } else {
         return int(c)
     }
+}
+
+func InsertPost(post Post) error {
+    replMap := map[string]interface{}{ "topicId": post.TopicId, "name": post.Name, "body": post.Body }
+    _, err := dbmap.Exec("INSERT INTO posts (topic_id, name, body) values (:topicId, :name, :body)", replMap)
+    return err
+
+    // err := dbmap.Insert(post)
+    // return err
 }
