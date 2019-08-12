@@ -13,6 +13,6 @@ func init() {
     if err != nil {
       panic("failed to connect database")
     }
-    dbmap := &gorp.DbMap{Db: db, Dialect: gorp.MySQLDialect{}}
-    defer dbmap.Db.Close()
+
+    dbmap = &gorp.DbMap{Db: db, Dialect: gorp.MySQLDialect{}}
 }
