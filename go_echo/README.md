@@ -7,4 +7,7 @@ interfaceについても実装したいが、一旦後回しにする
 
 API一覧
 ・GET /api/post/:id
+curl localhost:8080/api/topic/1?page=1
 
+・DELETE /api/post/:id
+curl -X DELETE localhost:8080/api/post/100 -d "{\"DeleteReason\":\"なんとなく\"}"  -H 'Content-Type:application/json' 
