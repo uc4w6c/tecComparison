@@ -1,2 +1,6 @@
 # helloKotlin
 helloKotlin/.idea
+
+helloKotlin/.DS_Store
+helloKotlin/.gradle/
+helloKotlin/build/classes

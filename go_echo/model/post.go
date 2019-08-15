@@ -61,3 +61,9 @@ func InsertPost(post Post) error {
     // err := dbmap.Insert(post)
     // return err
 }
+
+// NGワードのチェックをしたいけど・・・
+func (post Post) NgwordCheck() bool {
+    return true
+}
+
