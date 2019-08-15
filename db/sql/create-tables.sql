@@ -18,6 +18,8 @@ create table IF not exists `posts`
  topic_id         INT(20),
  name             VARCHAR(20) NOT NULL,
  body             VARCHAR(50) NOT NULL,
+ deleted_reason   VARCHAR(50),
+ deleted_at       Datetime default NULL,
  created_at       Datetime  default current_timestamp,
  updated_at       Timestamp default current_timestamp on update current_timestamp,
     PRIMARY KEY (id),
