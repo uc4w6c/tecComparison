@@ -3,7 +3,6 @@ helloKotlin/.idea
 
 helloKotlin/.DS_Store
 helloKotlin/.gradle/
-helloKotlin/build/classes
 helloKotlin/build/
 
 # https://github.com/sdeleuze/spring-boot-kotlin-demo
