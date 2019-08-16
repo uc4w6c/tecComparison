@@ -4,3 +4,5 @@ helloKotlin/.idea
 helloKotlin/.DS_Store
 helloKotlin/.gradle/
 helloKotlin/build/classes
+
+spring-boot-kotlin-demo
