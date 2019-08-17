@@ -2,6 +2,7 @@ package com.example.hellokotlin.controller
 
 import com.example.hellokotlin.entity.PostEntity
 import com.example.hellokotlin.entity.TopicEntity
+import com.example.hellokotlin.form.DeletePostForm
 import com.example.hellokotlin.form.PostForm
 import com.example.hellokotlin.service.PostService
 import com.example.hellokotlin.service.TopicService
@@ -18,5 +19,12 @@ class PostController(private val postService: PostService) {
     @RequestMapping(path= arrayOf("/"), method= arrayOf(RequestMethod.POST))
     fun insertPost(@RequestBody postForm: PostForm): PostEntity {
         return postService.insertPost(postForm)
+    }
+
+    @RequestMapping(path= arrayOf("{id}"), method= arrayOf(RequestMethod.DELETE))
+    fun deletePost(@PathVariable id: Long,
+                   @RequestBody deletePostForm: DeletePostForm): String {
+        postService.deletePost(id, deletePostForm.deletedReason)
+        return "Delete OK"
     }
 }
