@@ -9,13 +9,15 @@ import javax.persistence.Table
 @Entity
 @Table(name="posts")
 data class PostEntity(
-    @Id @GeneratedValue
-    val id: Long,
-    val topicId: Long,
-    val name: String,
-    val body: String,
-    val deletedReason: String,
-    val deletedAt: LocalDateTime,
-    val createdAt: LocalDateTime,
-    val updatedAt: LocalDateTime
-)
+        @Id @GeneratedValue
+        var id: Long?,
+        var topicId: Long?,
+        var name: String?,
+        var body: String?,
+        var deletedReason: String?,
+        var deletedAt: LocalDateTime?,
+        var createdAt: LocalDateTime?,
+        var updatedAt: LocalDateTime?
+) {
+    constructor(topicId: Long, name: String, body: String): this(null, topicId, name, body, null, null, null, null)
+}

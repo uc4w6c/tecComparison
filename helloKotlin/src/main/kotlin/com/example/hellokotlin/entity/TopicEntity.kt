@@ -9,7 +9,7 @@ import javax.persistence.Table
 @Entity
 @Table(name="topics")
 data class TopicEntity(
-        @Id @GeneratedValue
+    @Id @GeneratedValue
     val id: Long,
     val name: String,
     val createdAt: LocalDateTime,
