@@ -1,15 +1,12 @@
 package com.example.hellokotlin.entity
 
 import java.time.LocalDateTime
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Table(name="posts")
 data class PostEntity(
-        @Id @GeneratedValue
+        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long?,
         var topicId: Long?,
         var name: String?,
