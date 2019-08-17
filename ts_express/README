@@ -1,1 +1,6 @@
 参考にしたもの:https://qiita.com/IgnorantCoder/items/c9b79dbab8c1a34b769f
+
+実行コマンド
+./node_modules/.bin/webpack --config webpack.config.dev.js 
+node dist/server.js
+
