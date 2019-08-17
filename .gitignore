@@ -2,8 +2,8 @@
 helloKotlin/.idea
 
 helloKotlin/.DS_Store
-helloKotlin/.gradle/
-helloKotlin/build/
+helloKotlin/.gradle
+helloKotlin/build
 
 # https://github.com/sdeleuze/spring-boot-kotlin-demo
 spring-boot-kotlin-demo
