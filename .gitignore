@@ -7,3 +7,9 @@ helloKotlin/build/
 
 # https://github.com/sdeleuze/spring-boot-kotlin-demo
 spring-boot-kotlin-demo
+
+# ts_express
+ts_express/dist/
+ts_express/node_modules/
+ts_express/jspm_packages/
+
