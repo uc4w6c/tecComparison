@@ -1,5 +1,8 @@
 GO echoお試しプロジェクト
 
+2way SQLのメモ
+https://qiita.com/mattn/items/04c0db6cd9d9803f01cf
+
 go run main.go router.go
 
 本来であればpackageのimportは絶対パスで行うべきだが、今回は簡略化のために相対パス
