@@ -1,5 +1,7 @@
 GO echoお試しプロジェクト
 
+go run main.go router.go
+
 本来であればpackageのimportは絶対パスで行うべきだが、今回は簡略化のために相対パス
 
 interfaceについても実装したいが、一旦後回しにする(repositoryで実現したい)
