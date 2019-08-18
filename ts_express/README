@@ -1,5 +1,7 @@
 参考にしたもの:https://qiita.com/IgnorantCoder/items/c9b79dbab8c1a34b769f
 
+参考にしたい：https://github.com/microsoft/TypeScript-Node-Starter/tree/master/src/controllers
+
 実行コマンド
 ./node_modules/.bin/webpack --config webpack.config.dev.js 
 node dist/server.js
