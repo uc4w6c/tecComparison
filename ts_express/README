@@ -1,6 +1,22 @@
-参考にしたもの:https://qiita.com/IgnorantCoder/items/c9b79dbab8c1a34b769f
+参考にしたもの
+・構築時
+https://qiita.com/IgnorantCoder/items/c9b79dbab8c1a34b769f
 
-参考にしたい：https://github.com/microsoft/TypeScript-Node-Starter/tree/master/src/controllers
+・URL
+https://qiita.com/leafia78/items/73cc7160d002a4989416
+
+・SQL
+https://qiita.com/PianoScoreJP/items/7ed172cd0e7846641e13
+
+
+
+参考にしたい
+・DDD
+https://github.com/microsoft/TypeScript-Node-Starter/tree/master/src/controllers
+
+・nestjs
+https://qiita.com/teracy55/items/83cae05eed027a510a7e
+https://area-b.com/blog/2018/09/16/1600/
 
 実行コマンド
 ./node_modules/.bin/webpack --config webpack.config.dev.js 

@@ -55,14 +55,15 @@ export default class Post {
         return this.updatedAt;
     }
 
-    public static getPostsByTopicId(id: number, page: number) {
+    public static getPostsByTopicId(id: number, page: number): Post[] {
+        const posts: Post[] = [];
         try {
             const conn = DBStore.createConnection();
             // プレースホルダーは使えないらしい・・・
             // const sql = 'SELECT * from posts WHERE topic_id = :id LIMIT :offset, :rowCount';
             const sql = 'SELECT * from posts WHERE topic_id = ? LIMIT ?, ?';
             /*
-            この書き方はダメかも
+            この書き方はダメっぽい。where条件になっちゃう
             const param: any = {
                 id: (id),
                 offset: (page - 1) * this.DISPLAYABLE_SIZE,
@@ -75,12 +76,20 @@ export default class Post {
             // const data = conn.query(sql, param, (err, rows, fields) => {
             const query = conn.query(sql, [id, offset, rowCount], (err, rows, fields) => {
                 if (err) { console.log('エラー・・・'); }
-                console.log(rows[0].name);
-                console.log(rows[0].id);
+                console.log(rows[0]);
+                /*
+                rows.forEach((row) => {
+                    // 途中改行の方法がわからないから一旦これで・・・
+                    const post = new Post(row.id, row.topic_id, row.name, row.body, row.deleted_reason, row.deleted_at, row.created_at, row.updated_at);
+                    posts.push(post);
+                });
+                */
             });
             console.log(query.sql);
+            return posts;
         } catch (err) {
             console.log('エラーだけど・・・');
+            return posts;
         }
     }
 }

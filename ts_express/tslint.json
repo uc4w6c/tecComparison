@@ -1,6 +1,11 @@
 {
     "extends": "tslint-config-airbnb",
     "rules": {
-        "ter-indent": [true, 4]
+        "ter-indent": [true, 4],
+        // 1行の最大桁数を120桁にする (true・120)
+        "max-line-length": [
+            true,
+            200
+        ]
     }
 }
