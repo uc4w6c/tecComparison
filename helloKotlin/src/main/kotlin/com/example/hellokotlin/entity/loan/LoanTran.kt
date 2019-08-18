@@ -34,6 +34,6 @@ fun calcFixedRepaymentAmount(balance:Long,
     val numerator = (balance.toBigDecimal() * mouthRate.toBigDecimal() * (1 + mouthRate).toBigDecimal().pow(repaymentPeriod)).setScale(10, RoundingMode.DOWN)
     // 計算分母
     val denominator = ((1 + mouthRate).toBigDecimal().pow(repaymentPeriod - 1)).setScale(10, RoundingMode.DOWN)
-    // TODO: 以下がエラーになる理由がわからない・・・
-    return (numerator.toBigDecimal() / denominator.toBigDecimal()).setScale(0, RoundingMode.DOWN).toLong()
+
+    return  (numerator / denominator).setScale(0, RoundingMode.DOWN).toLong()
 }

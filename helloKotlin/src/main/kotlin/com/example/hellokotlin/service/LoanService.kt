@@ -3,6 +3,7 @@ package com.example.hellokotlin.service
 import com.example.hellokotlin.entity.TopicEntity
 import com.example.hellokotlin.entity.PostEntity
 import com.example.hellokotlin.entity.loan.LoanTran
+import com.example.hellokotlin.entity.loan.calcFixedRepaymentAmount
 import com.example.hellokotlin.repository.PostRepository
 import com.example.hellokotlin.repository.TopicRepository
 import org.springframework.data.domain.Page
