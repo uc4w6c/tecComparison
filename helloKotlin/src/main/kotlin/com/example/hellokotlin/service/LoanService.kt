@@ -29,14 +29,18 @@ class LoanService(private val topicRepository: TopicRepository) {
         var repaymentMouthCount = LoanTran.repaymentMouthCount(repaymentPeriod)
         val balanceMinus = balancesMinus(borrowingAmount)
         var balance = borrowingAmount
+        // ループさせるのオブジェクト指向っぽくなくてダサいけど、一旦これで
         for (i in 1..repaymentMouthCount) {
             // TODO: ここの宣言で interestRateが変数として認識されてしまいエラーになっている
             val loanTran = LoanTran.build {
-                id = i.toLong()
-                month = "1901/01" // 一旦仮
-                total = fixedRepaymentAmount
-                interestRate = interestRate
-                beforeBalance = 0
+                // thisをつけないとinterestRateが [Val cannot be reassigned]でエラーになる（同名引数）
+                this.id = i.toLong()
+                this.month = "1901/01" // 一旦仮
+                this.total = fixedRepaymentAmount
+                // 以下がだめな場合はこれを試す this@build.interestRate = interestRate
+                // 参考: https://discuss.kotlinlang.org/t/problems-with-apply-function/1934
+                this.interestRate = interestRate
+                this.beforeBalance = balance
             }
 
             mutableLoanList.add(loanTran)

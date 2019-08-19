@@ -1,5 +1,6 @@
 package com.example.hellokotlin.entity.loan
 
+import java.math.BigDecimal
 import java.math.RoundingMode
 import kotlin.math.floor
 
@@ -54,6 +55,10 @@ data class LoanTran(
          *       一応変えたけど・・・
          */
         fun mouthRate(interestRate: Double): Double {
+            // TODO: 0.005が出力してほしいが、0が出力されてしまう
+            //  Doubleから BigDecimalはvalueOfを利用した方がいいらしいが、、、
+            println("interestRate:" + BigDecimal.valueOf(interestRate))
+            println((BigDecimal.valueOf(interestRate) / BigDecimal.valueOf(100)).toString())
             return (interestRate.toBigDecimal() / 100.toBigDecimal() / 12.toBigDecimal())
                     .setScale(10, RoundingMode.DOWN).toDouble()
         }
@@ -63,7 +68,7 @@ data class LoanTran(
          */
         fun calcMonthInterest(balance: Long, interestRate: Double): Long {
             return (balance.toBigDecimal() * mouthRate(interestRate).toBigDecimal())
-                        .setScale(10, RoundingMode.DOWN).toLong()
+                        .setScale(0, RoundingMode.DOWN).toLong()
         }
 
         /**

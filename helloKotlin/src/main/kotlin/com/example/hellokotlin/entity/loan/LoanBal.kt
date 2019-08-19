@@ -16,7 +16,8 @@ data class LoanBal(
  */
 fun balancesMinus(amount: Long): (Long) -> Long {
     var balanceAmount = amount
-    return fun (payment: Long) {
+    return fun (payment: Long): Long {
         balanceAmount -= payment
+        return balanceAmount
     }
 }
