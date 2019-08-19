@@ -10,3 +10,13 @@ data class LoanBal(
         val repaymentCount: Long
 )
 
+/**
+ * 現在の支払残高を取得する関数
+ * TODO: あっているか怪しい。要確認
+ */
+fun balancesMinus(amount: Long): (Long) -> Long {
+    var balanceAmount = amount
+    return fun (payment: Long) {
+        balanceAmount -= payment
+    }
+}
