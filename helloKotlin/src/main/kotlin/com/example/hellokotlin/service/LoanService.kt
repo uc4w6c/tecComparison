@@ -26,7 +26,7 @@ class LoanService(private val topicRepository: TopicRepository) {
         val fixedRepaymentAmount = LoanTran.calcFixedRepaymentAmount(borrowingAmount, interestRate, repaymentPeriod)
 
         val mutableLoanList: MutableList<LoanTran> = mutableListOf()
-        var repaymentMouthCount = LoanTran.repaymentMouthCount(repaymentPeriod)
+        val repaymentMouthCount = LoanTran.repaymentMouthCount(repaymentPeriod)
         val balanceMinus = balancesMinus(borrowingAmount)
         var balance = borrowingAmount
         // ループさせるのオブジェクト指向っぽくなくてダサいけど、一旦これで

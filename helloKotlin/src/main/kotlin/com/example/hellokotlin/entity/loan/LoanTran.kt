@@ -24,13 +24,14 @@ data class LoanTran(
 
         fun build(): LoanTran {
             val interest = calcMonthInterest(beforeBalance, interestRate)
+            val principal = total - interest
             return LoanTran(
                     id = id,
                     month = month,
                     total = total,
-                    principal = total - interest,
+                    principal = principal,
                     interest = interest,
-                    balance = beforeBalance - total
+                    balance = beforeBalance - principal
             )
         }
     }
