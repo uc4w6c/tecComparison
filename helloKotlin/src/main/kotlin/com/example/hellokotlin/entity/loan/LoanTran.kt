@@ -60,18 +60,19 @@ data class LoanTran(
             //  普通にdivideを使わないといけない？？
             //  この記事だといけそうだけど・・https://qiita.com/namidame_Ba/items/55becce93cfae76dce19
             //  多分 - が勝手に0桁roundになる
-            println("interestRate:" + BigDecimal.valueOf(interestRate))
-            println((BigDecimal.valueOf(interestRate).divide(BigDecimal.valueOf(100))).toString())
-            return (interestRate.toBigDecimal() / 100.toBigDecimal() / 12.toBigDecimal())
-                    .setScale(10, RoundingMode.DOWN).toDouble()
+            return (BigDecimal.valueOf(interestRate)
+                        .divide(100.toBigDecimal())
+                        .divide(12.toBigDecimal(), 10, RoundingMode.DOWN)).toDouble()
         }
 
         /**
          * 現在の残高と年利から今月の支払い利息を計算
          */
         fun calcMonthInterest(balance: Long, interestRate: Double): Long {
-            return (balance.toBigDecimal() * mouthRate(interestRate).toBigDecimal())
-                        .setScale(0, RoundingMode.DOWN).toLong()
+            return (balance.toBigDecimal()
+                        .multiply(BigDecimal.valueOf(mouthRate(interestRate)))
+                        .setScale( 0, RoundingMode.DOWN))
+                        .toLong()
         }
 
         /**
@@ -89,11 +90,17 @@ data class LoanTran(
             val mouthRate = mouthRate(interestRate)
             // TODO: 以下BigDecimal使っているけどあってる？確認
             // 計算分子
-            val numerator = (balance.toBigDecimal() * mouthRate.toBigDecimal() * (1 + mouthRate).toBigDecimal().pow(repaymentPeriod)).setScale(10, RoundingMode.DOWN)
+            val numerator = (balance.toBigDecimal()
+                                .multiply(BigDecimal.valueOf(mouthRate))
+                                .multiply(BigDecimal.valueOf(1 + mouthRate))
+                                .pow(repaymentPeriod))
+                                .setScale(10, RoundingMode.DOWN)
             // 計算分母
-            val denominator = ((1 + mouthRate).toBigDecimal().pow(repaymentPeriod - 1)).setScale(10, RoundingMode.DOWN)
+            val denominator = (BigDecimal.valueOf(1 + mouthRate)
+                                    .pow(repaymentPeriod - 1))
+                                    .setScale(10, RoundingMode.DOWN)
 
-            return  (numerator / denominator).setScale(0, RoundingMode.DOWN).toLong()
+            return  (numerator.divide(denominator, 0, RoundingMode.DOWN)).toLong()
         }
     }
 }
