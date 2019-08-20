@@ -88,16 +88,19 @@ data class LoanTran(
             // 月の金利
             // MEMO: マジックナンバーになっているけど、一旦これで
             val mouthRate = mouthRate(interestRate)
+
             // TODO: 以下BigDecimal使っているけどあってる？確認
             // 計算分子
             val numerator = (balance.toBigDecimal()
                                 .multiply(BigDecimal.valueOf(mouthRate))
-                                .multiply(BigDecimal.valueOf(1 + mouthRate))
-                                .pow(repaymentPeriod))
+                                .multiply((
+                                    BigDecimal.valueOf(1 + mouthRate)).pow(repaymentMouthCount)))
                                 .setScale(10, RoundingMode.DOWN)
+
             // 計算分母
             val denominator = (BigDecimal.valueOf(1 + mouthRate)
-                                    .pow(repaymentPeriod - 1))
+                                    .pow(repaymentMouthCount))
+                                    .minus(1.toBigDecimal())
                                     .setScale(10, RoundingMode.DOWN)
 
             return  (numerator.divide(denominator, 0, RoundingMode.DOWN)).toLong()
