@@ -10,7 +10,7 @@ import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 import org.springframework.data.domain.PageRequest
-
+import java.util.*
 
 
 @Service
@@ -29,6 +29,8 @@ class LoanService(private val topicRepository: TopicRepository) {
         val repaymentMouthCount = LoanTran.repaymentMouthCount(repaymentPeriod)
         val balanceMinus = balancesMinus(borrowingAmount)
         var balance = borrowingAmount
+        val calendar: Calendar = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"), Locale.JAPAN);
+
         // ループさせるのオブジェクト指向っぽくなくてダサいけど、一旦これで
         for (i in 1..repaymentMouthCount) {
             // TODO: ここの宣言で interestRateが変数として認識されてしまいエラーになっている
@@ -36,14 +38,13 @@ class LoanService(private val topicRepository: TopicRepository) {
             val loanTran = LoanTran.build {
                 // thisをつけないとinterestRateが [Val cannot be reassigned]でエラーになる（同名引数）
                 this.id = i.toLong()
-                this.month = "1901/01" // 一旦仮
+                this.month = calendar.get(Calendar.YEAR).toString() + "/" + calendar.get(Calendar.MONTH).toString()
                 this.total = fixedRepaymentAmount
-                // 以下がだめな場合はこれを試す this@build.interestRate = interestRate
-                // 参考: https://discuss.kotlinlang.org/t/problems-with-apply-function/1934
                 this.interestRate = interestRate
                 this.beforeBalance = balance
             }
 
+            calendar.add(Calendar.MONTH, 1);
             mutableLoanList.add(loanTran)
             balance = balanceMinus(loanTran.principal)
         }
