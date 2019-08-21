@@ -33,8 +33,6 @@ class LoanService(private val topicRepository: TopicRepository) {
 
         // ループさせるのオブジェクト指向っぽくなくてダサいけど、一旦これで
         for (i in 1..repaymentMouthCount) {
-            // TODO: ここの宣言で interestRateが変数として認識されてしまいエラーになっている
-            // TODO: 最後のループでは残高を全て支払うように修正
             val loanTran = LoanTran.build {
                 // thisをつけないとinterestRateが [Val cannot be reassigned]でエラーになる（同名引数）
                 this.id = i.toLong()

@@ -6,6 +6,7 @@ import kotlin.math.floor
 
 /**
  * ローン返済の明細情報
+ * NOTE: data classで用意したけど、色々function作っちゃった。クラス分割した方がいいかも
  */
 data class LoanTran(
         val id: Long,

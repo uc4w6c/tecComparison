@@ -2,6 +2,7 @@ package com.example.hellokotlin.entity.loan
 
 /**
  * ローン残高
+ * MEMO: このクラスは未利用
  */
 data class LoanBal(
         // 残りの残高
