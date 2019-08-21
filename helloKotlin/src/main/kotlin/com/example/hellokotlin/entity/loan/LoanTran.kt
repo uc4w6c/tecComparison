@@ -25,13 +25,16 @@ data class LoanTran(
         fun build(): LoanTran {
             val interest = calcMonthInterest(beforeBalance, interestRate)
             val principal = total - interest
+            // 支払後残高が今回支払額より少ない場合は最終支払分と判断しまとめる
+            val lastBalance = if (beforeBalance - principal - principal < 0) beforeBalance - principal else 0
+
             return LoanTran(
                     id = id,
                     month = month,
-                    total = total,
-                    principal = principal,
+                    total = principal + lastBalance,
+                    principal = principal + lastBalance,
                     interest = interest,
-                    balance = beforeBalance - principal
+                    balance = beforeBalance - principal - lastBalance
             )
         }
     }
