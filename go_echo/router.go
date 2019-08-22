@@ -18,5 +18,7 @@ func newRouter() *echo.Echo {
     api.DELETE("/post/:id", handler.DeletePost) // DELETE /api/post/:id
     api.POST("/post", handler.InsertPost)       // POST   /api/post
 
+    api.GET("/loan", handler.GetLoan)           // GET    /api/loan
+
     return e
 }
