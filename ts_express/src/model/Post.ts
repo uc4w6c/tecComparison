@@ -78,6 +78,7 @@ export default class Post {
                 if (err) { console.log('エラー・・・'); }
                 console.log(rows[0]);
                 /*
+                forEachだとうまくいかない・・・なぜ
                 rows.forEach((row) => {
                     // 途中改行の方法がわからないから一旦これで・・・
                     const post = new Post(row.id, row.topic_id, row.name, row.body, row.deleted_reason, row.deleted_at, row.created_at, row.updated_at);
