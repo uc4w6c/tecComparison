@@ -32,7 +32,7 @@ data class LoanTran(
             return LoanTran(
                     id = id,
                     month = month,
-                    total = principal + lastBalance,
+                    total = total + lastBalance,
                     principal = principal + lastBalance,
                     interest = interest,
                     balance = beforeBalance - principal - lastBalance
