@@ -1,5 +1,6 @@
 import * as Express from 'express';
 import topic from './routes/topic';
+import loan from './routes/loan';
 
 const app = Express();
 
@@ -10,6 +11,7 @@ app.get(
     });
 
 app.use('/topic', topic);
+app.use('/loan', loan);
 
 app.listen(
     3000,
