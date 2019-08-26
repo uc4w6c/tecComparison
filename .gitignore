@@ -13,3 +13,10 @@ ts_express/dist/
 ts_express/node_modules/
 ts_express/jspm_packages/
 
+# ts_nest
+ts_nest/nestjs-test/dist
+ts_nest/nestjs-test/node_modules
+ts_nest/nestjs-test/logs
+ts_nest/nestjs-test/.DS_Store
+ts_nest/nestjs-test/.project
+ts_nest/nestjs-test/.classpath
