@@ -1,5 +1,6 @@
 import { Rate } from '../../infrastructure/loan/Rate';
 import { balancesMinus } from './Balance';
+import moment from 'moment'
 
 export class LoanTran {
     private id: number;
@@ -23,12 +24,22 @@ export class LoanTran {
         this.interest = interest;
         this.balance = balance;
     }
+
+    public getPrincipal(): number {
+        return this.principal;
+    }
+}
+
+// 金利レート取得
+export interface RateInterface {
+    findRate(): number;
 }
 
 export const calcLoan = (borrowingAmount: number, repaymentPeriod: number): LoanTran[] => {
     let rateInterface: RateInterface;
     rateInterface = new Rate();
     const interestRate = rateInterface.findRate();
+    const fixedRepaymentAmount = fixedRepaymentAmountCalc(borrowingAmount, interestRate, repaymentPeriod)
 
     const repaymentMouthCount = repaymentMouthCountCalc(repaymentPeriod);
 	let balanceMinus = balancesMinus(borrowingAmount);
@@ -36,18 +47,13 @@ export const calcLoan = (borrowingAmount: number, repaymentPeriod: number): Loan
 	let date = new Date();
     let loanTrans: LoanTran[] = [];
     for (let i:number = 1; i < repaymentMouthCount + 1; i++) {
-        const loanTran = buildLoanTran(i, Moment(date).format("2006/01"), fixedRepaymentAmount, interestRate, balance);
-		loanTrans = append(loanTrans, loanTran);
+        const loanTran = buildLoanTran(i, moment(date).format("YYYY/MM"), fixedRepaymentAmount, interestRate, balance);
+        loanTrans.push(loanTran);
 		date.setMonth( date.getDate() + 1);
-		balance = balanceMinus(loanTran.Principal)
+		balance = balanceMinus(loanTran.getPrincipal())
     }
 
-    // 仮でnull返却
-    return null
-}
-
-export interface RateInterface {
-    findRate():{interestRate:number};
+    return loanTrans
 }
 
 const buildLoanTran = (id: number, month: string, total: number, 
@@ -91,4 +97,14 @@ const repaymentMouthCountCalc = (repaymentPeriod: number) : number => {
 // 現在の残高と年利から今月の支払い利息を計算
 const calcMonthInterestCalc = (balance: number, interestRate: number) : number => {
 	return RoundDown(balance*mouthRateCalc(interestRate), 0);
+}
+
+// 毎月の一定返済金額を計算する
+const fixedRepaymentAmountCalc = (balance: number, interestRate: number, repaymentPeriod:number) : number => {
+    const repaymentMouthCount = repaymentMouthCountCalc(repaymentPeriod);
+    const mouthRate = mouthRateCalc(interestRate);
+
+    const numerator = RoundDown(balance * mouthRate * (Math.pow((1 + mouthRate), repaymentMouthCount)), 10);
+    const denominator = RoundDown(Math.pow((1 + mouthRate), repaymentMouthCount) -1, 10);
+    return RoundDown(numerator / denominator, 0)
 }
