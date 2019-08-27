@@ -1,1 +1,7 @@
 参考になりそう:https://area-b.com/blog/2018/09/16/1600/
+
+curl -X POST localhost:3000/cats -H 'Content-Type:application/json' -d "{\"name\":\"タロー\", \"age\": 1, \"breed\":\"ペルシャ\"}"
+curl -X POST localhost:3000/cats -H 'Content-Type:application/json' -d "{\"name\":\"マル\", \"age\": 2, \"breed\":\"アメショー\"}"
+
+
+curl localhost:3000/cats
