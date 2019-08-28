@@ -12,7 +12,7 @@ export class LoanService {
         rateInterface = new RateImp();
         const interestRate = rateInterface.findRate();
         const fixedRepaymentAmount = fixedRepaymentAmountCalc(borrowingAmount, interestRate, repaymentPeriod);
-    
+
         const repaymentMouthCount = repaymentMouthCountCalc(repaymentPeriod);
         const balanceMinus = balancesMinus(borrowingAmount);
         let balance = borrowingAmount;
@@ -24,7 +24,7 @@ export class LoanService {
             date.setMonth(date.getMonth() + 1);
             balance = balanceMinus(loanTran.getPrincipal());
         }
-    
+
         return loanTrans;
     }
 }
