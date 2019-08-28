@@ -8,6 +8,8 @@ export class LoanController {
 
   @Get()
   async loanCalc(): Promise<LoanTran[]> {
-    return this.loanService.loanCalc();
+    const borrowingAmount = 35000000;
+    const repaymentPeriod = 35;
+    return this.loanService.loanCalc(borrowingAmount, repaymentPeriod);
   }
 }
