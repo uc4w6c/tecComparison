@@ -110,3 +110,58 @@ Percentage of the requests served within a certain time (ms)
   99%    427
  100%   1688 (longest request)
 
+▪️go-echo
+saitouyuutanoMacBook-puro:tecComparison ysaito$ ab -n 10000 -c 100 "http://localhost:8080/api/loan"
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            8080
+
+Document Path:          /api/loan
+Document Length:        40196 bytes
+
+Concurrency Level:      100
+Time taken for tests:   12.435 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      402990000 bytes
+HTML transferred:       401960000 bytes
+Requests per second:    804.19 [#/sec] (mean)
+Time per request:       124.348 [ms] (mean)
+Time per request:       1.243 [ms] (mean, across all concurrent requests)
+Transfer rate:          31648.68 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.4      0      10
+Processing:     2  124  98.9    112    1137
+Waiting:        2  122  98.7    111    1137
+Total:          2  124  98.8    112    1137
+
+Percentage of the requests served within a certain time (ms)
+  50%    112
+  66%    123
+  75%    131
+  80%    136
+  90%    148
+  95%    153
+  98%    162
+  99%   1006
+ 100%   1137 (longest request)

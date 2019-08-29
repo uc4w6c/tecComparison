@@ -34,3 +34,7 @@ curl -X POST localhost:8080/api/post -d "{\"topic_id\":1, \"name\":\"山田 花�
 curl -X GET localhost:8080/api/loan
 オブジェクト指向になっていないのが気になる
 もっと良い書き方があるはずだが、、、
+
+
+ docker build -t go-echo .
+ docker run -d -p 8080:8080 --cpuset-cpus 1 --memory=1g go-echo
