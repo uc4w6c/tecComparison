@@ -5,3 +5,22 @@ curl -X POST localhost:3000/cats -H 'Content-Type:application/json' -d "{\"name\
 
 
 curl localhost:3000/cats
+
+
+docker run -d -p 3000:3000 --cpuset-cpus 1 --memory=128m --memory-swap=128m ts-nest
+で起動するとDockerが落ちる。メモリが足りないみたい 
+Killed
+npm ERR! code ELIFECYCLE
+npm ERR! errno 137
+npm ERR! nestjs-test@0.0.1 start: `ts-node -r tsconfig-paths/register src/main.ts`
+npm ERR! Exit status 137
+npm ERR! 
+npm ERR! Failed at the nestjs-test@0.0.1 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /root/.npm/_logs/2019-08-29T14_04_07_767Z-debug.log
+
+
+$ docker build -t ts-nest .
+$ docker run -d -p 3000:3000 --cpuset-cpus 1 --memory=256m --memory-swap=256m ts-nest
