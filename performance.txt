@@ -1,0 +1,58 @@
+▪️ts-express
+saitouyuutanoMacBook-puro:ts_express ysaito$ ab -n 10000 -c 100 "http://localhost:3000/loan"
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /loan
+Document Length:        40195 bytes
+
+Concurrency Level:      100
+Time taken for tests:   16.660 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      404070000 bytes
+HTML transferred:       401950000 bytes
+Requests per second:    600.24 [#/sec] (mean)
+Time per request:       166.601 [ms] (mean)
+Time per request:       1.666 [ms] (mean, across all concurrent requests)
+Transfer rate:          23685.28 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    1   0.8      0       8
+Processing:    23  165  17.4    161     227
+Waiting:       22  130  24.8    131     210
+Total:         23  166  17.5    162     227
+WARNING: The median and mean for the initial connection time are not within a normal deviation
+        These results are probably not that reliable.
+
+Percentage of the requests served within a certain time (ms)
+  50%    162
+  66%    167
+  75%    172
+  80%    177
+  90%    189
+  95%    203
+  98%    208
+  99%    212
+ 100%    227 (longest request)
+

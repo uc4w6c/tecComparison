@@ -24,3 +24,7 @@ https://area-b.com/blog/2018/09/16/1600/
 ./node_modules/.bin/webpack --config webpack.config.dev.js 
 node dist/server.js
 
+・Docker
+docker build -t ts-express .
+docker run -d -p 3000:3000 --cpuset-cpus 1 --memory=128m --memory-swap=128m ts-express
+
