@@ -22,18 +22,18 @@ logging:
 ---
 spring:
   profiles: docker
-    datasource:↲
-      url: jdbc:mysql://db/testdb↲
-      username: test↲
-      password: test↲
-      driverClassName: com.mysql.jdbc.Driver↲ 
-logging:↲
-  level:↲
-    org:↲
-      hibernate:↲
-        SQL: debug↲
-        type:↲
-          EnumType: trace↲
-          descriptor:↲
-            sql:↲
-              BasicBinder: trace↲
+    datasource:
+      url: jdbc:mysql://db/testdb
+      username: test
+      password: test
+      driverClassName: com.mysql.jdbc.Driver
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        type:
+          EnumType: trace
+          descriptor:
+            sql:
+              BasicBinder: trace
