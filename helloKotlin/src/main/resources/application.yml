@@ -4,11 +4,11 @@ spring:
 ---
 spring:
   profiles: localhost
-    datasource:
-      url: jdbc:mysql://127.0.0.1:3307/testdb
-      username: test
-      password: test
-      driverClassName: com.mysql.jdbc.Driver
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3307/testdb
+    username: test
+    password: test
+    driverClassName: com.mysql.jdbc.Driver
 logging:
   level:
     org:
@@ -22,11 +22,11 @@ logging:
 ---
 spring:
   profiles: docker
-    datasource:
-      url: jdbc:mysql://db/testdb
-      username: test
-      password: test
-      driverClassName: com.mysql.jdbc.Driver
+  datasource:
+    url: jdbc:mysql://db/testdb
+    username: test
+    password: test
+    driverClassName: com.mysql.jdbc.Driver
 logging:
   level:
     org:

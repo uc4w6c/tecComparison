@@ -1,2 +1,8 @@
 kotlin-spring
 
+./gradlew build
+ docker build -t hello-kotlin .
+ docker run -d -p 8080:8080 --cpuset-cpus 1 --memory=1g hello-kotlin
+
+dockerだとDBサーバを認識しないので、docker-composeを利用するべきかも
+
