@@ -7,6 +7,8 @@ export class AppController {
 
   @Get()
   getHello(): string {
+    // nest.jsではthrowしても落ちない
+    // throw new Error('example Error');
     return this.appService.getHello();
   }
 }

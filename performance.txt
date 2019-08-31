@@ -165,3 +165,59 @@ Percentage of the requests served within a certain time (ms)
   98%    162
   99%   1006
  100%   1137 (longest request)
+
+▪️kotlin-spring
+$  ab -n 10000 -c 100 "http://localhost:8080/loan/"
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            8080
+
+Document Path:          /loan/
+Document Length:        39845 bytes
+
+Concurrency Level:      100
+Time taken for tests:   19.649 seconds
+Complete requests:      10000
+Failed requests:        0
+Total transferred:      399640000 bytes
+HTML transferred:       398450000 bytes
+Requests per second:    508.94 [#/sec] (mean)
+Time per request:       196.486 [ms] (mean)
+Time per request:       1.965 [ms] (mean, across all concurrent requests)
+Transfer rate:          19862.66 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.5      0       8
+Processing:     5  195 117.8    171    1049
+Waiting:        4  160 102.9    136     985
+Total:          5  196 118.1    172    1056
+
+Percentage of the requests served within a certain time (ms)
+  50%    172
+  66%    218
+  75%    252
+  80%    274
+  90%    341
+  95%    403
+  98%    498
+  99%    655
+ 100%   1056 (longest request)

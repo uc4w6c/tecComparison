@@ -1,5 +1,8 @@
 kotlin-spring
 
+参考
+https://qiita.com/wataling/items/fa8b74fa50d80b88aea3
+
 ./gradlew build
  docker build -t hello-kotlin .
  docker run -d -p 8080:8080 --cpuset-cpus 1 --memory=1g hello-kotlin
