@@ -26,3 +26,8 @@ services:
       - db
     ports:
       - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 1g
