@@ -42,3 +42,195 @@ Percentage of the requests served within a certain time (ms)
   98%   1301
   99%   1308
  100%   1308 (longest request)
+
+
+・kotlin2 （おそらく暖気したら速くなった！)
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            8080
+
+Document Path:          /loan/
+Document Length:        39845 bytes
+
+Concurrency Level:      100
+Time taken for tests:   0.313 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      3996400 bytes
+HTML transferred:       3984500 bytes
+Requests per second:    319.03 [#/sec] (mean)
+Time per request:       313.452 [ms] (mean)
+Time per request:       3.135 [ms] (mean, across all concurrent requests)
+Transfer rate:          12450.82 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        3    5   0.9      5       6
+Processing:    34  199  95.5    224     306
+Waiting:       13  170  87.9    168     298
+Total:         40  204  95.0    229     311
+
+Percentage of the requests served within a certain time (ms)
+  50%    229
+  66%    287
+  75%    297
+  80%    305
+  90%    309
+  95%    310
+  98%    310
+  99%    311
+ 100%    311 (longest request)
+
+
+
+
+
+・node.js nest.js
+saitouyuutanoMacBook-puro:nestjs-test ysaito$ ab -n 100 -c 100 "http://localhost:3000/loan/"
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /loan/
+Document Length:        40195 bytes
+
+Concurrency Level:      100
+Time taken for tests:   0.434 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      4040700 bytes
+HTML transferred:       4019500 bytes
+Requests per second:    230.64 [#/sec] (mean)
+Time per request:       433.585 [ms] (mean)
+Time per request:       4.336 [ms] (mean, across all concurrent requests)
+Transfer rate:          9100.86 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        2    5   1.7      5       8
+Processing:   397  408   7.4    408     424
+Waiting:       74  271  82.4    281     395
+Total:        404  413   5.9    413     427
+
+Percentage of the requests served within a certain time (ms)
+  50%    413
+  66%    416
+  75%    417
+  80%    417
+  90%    425
+  95%    426
+  98%    426
+  99%    427
+ 100%    427 (longest request)
+
+
+
+
+・go echo
+saitouyuutanoMacBook-puro:go_echo ysaito$ ab -n 100 -c 100 "http://localhost:8081/loan/"
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            8081
+
+Document Path:          /loan/
+Document Length:        24 bytes
+
+Concurrency Level:      100
+Time taken for tests:   0.069 seconds
+Complete requests:      100
+Failed requests:        0
+Non-2xx responses:      100
+Total transferred:      15400 bytes
+HTML transferred:       2400 bytes
+Requests per second:    1458.81 [#/sec] (mean)
+Time per request:       68.549 [ms] (mean)
+Time per request:       0.685 [ms] (mean, across all concurrent requests)
+Transfer rate:          219.39 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        2    5   1.7      5       7
+Processing:     9   34  15.6     28      60
+Waiting:        9   34  15.8     27      60
+Total:         14   39  14.3     34      62
+
+Percentage of the requests served within a certain time (ms)
+  50%     34
+  66%     48
+  75%     53
+  80%     55
+  90%     59
+  95%     60
+  98%     62
+  99%     62
+ 100%     62 (longest request)
+
+
+
+
+
+・node.js express
+saitouyuutanoMacBook-puro:ts_express ysaito$ ab -n 100 -c 100 "http://localhost:3001/loan/"
+This is ApacheBench, Version 2.3 <$Revision: 1807734 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient).....done
+
+
+Server Software:        
+Server Hostname:        localhost
+Server Port:            3001
+
+Document Path:          /loan/
+Document Length:        40195 bytes
+
+Concurrency Level:      100
+Time taken for tests:   0.377 seconds
+Complete requests:      100
+Failed requests:        0
+Total transferred:      4040700 bytes
+HTML transferred:       4019500 bytes
+Requests per second:    265.59 [#/sec] (mean)
+Time per request:       376.516 [ms] (mean)
+Time per request:       3.765 [ms] (mean, across all concurrent requests)
+Transfer rate:          10480.29 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        2    5   1.5      5       7
+Processing:    25  313  77.1    361     367
+Waiting:       23  246  77.8    252     357
+Total:         31  318  75.9    365     371
+
+Percentage of the requests served within a certain time (ms)
+  50%    365
+  66%    367
+  75%    368
+  80%    368
+  90%    369
+  95%    371
+  98%    371
+  99%    371
+ 100%    371 (longest request)
